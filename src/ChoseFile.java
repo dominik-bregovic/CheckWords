@@ -3,19 +3,28 @@ import java.io.File;
 
 public class ChoseFile {
 
-    private Reader readFile;
+    private TextAnalysis readFile = new TextAnalysis();
     private JFileChooser chooser;
     private File file;
     private int response;
 
     public ChoseFile(){
-         chooser = new JFileChooser(".");
-         chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-         chooser.setDialogTitle("Choose your textfile: ");
-         response = chooser.showOpenDialog(null); // if you have choosen a txt. file the 0, otherwise 1
-
+        defineJFileChosser();
         gettingTextFilePath();
         readChosenDoc();
+
+        readFile.listWords();
+
+
+
+    }
+
+    public void defineJFileChosser(){
+        this.chooser = new JFileChooser(".");
+        this.chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        this.chooser.setDialogTitle("Choose your textfile: ");
+        this.response = this.chooser.showOpenDialog(null); // if you have choosen a txt. file the 0, otherwise 1
+
     }
 
     public void gettingTextFilePath(){
@@ -26,9 +35,9 @@ public class ChoseFile {
     }
 
     public void readChosenDoc(){
-        this.readFile = new Reader();
-        readFile.reader(file.toString());
-        System.out.println(readFile.getText());
+
+        this.readFile.reader(this.file.toString());
+        System.out.println(this.readFile.getText());/////////////////////////////////////////////////11111111111111
     }
 
 

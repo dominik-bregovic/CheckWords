@@ -12,31 +12,31 @@ public class GUI implements ActionListener {
 
     public GUI(){
 
-        jFrame = new JFrame();
-        jButton = new JButton("Search for file");
-        jButton.addActionListener(this);
+        this.jFrame = new JFrame();
+        this.jButton = new JButton("Search for file");
+        this.jButton.addActionListener(this);
 
 //        jLabel = new JLabel();
 
-        jPanel = new JPanel();
-        jPanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        jPanel.setLayout(new GridLayout(1,1));
-        jPanel.add(jButton);
+        this.jPanel = new JPanel();
+        this.jPanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        this.jPanel.setLayout(new GridLayout(1,1));
+        this.jPanel.add(jButton);
 //        jPanel.add(jLabel);
 
 
-        jFrame.add(jPanel, BorderLayout.CENTER);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setTitle("Our Reader");
-        jFrame.pack();
-        jFrame.setVisible(true);
+        this.jFrame.add(jPanel, BorderLayout.CENTER);
+        this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.jFrame.setTitle("Our Reader");
+        this.jFrame.pack();
+        this.jFrame.setVisible(true);
     }
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        fileChoose = new ChoseFile();
+        this.fileChoose = new ChoseFile();
     }
 
 }

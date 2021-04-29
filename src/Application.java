@@ -6,9 +6,5 @@ public class Application {
         GUI gui = new GUI();
 
 
-//        Write writting = new Write();
-//        writting.writeString();
-//        Reader reader = new Reader();
-
     }
 }
