@@ -1,28 +1,29 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
 
+    BufferedReader reader;
+    String text = "";
 
+    public void reader(String fileName){
 
-
-    public String reader(String fileName){
-
+        String lines = "";
         try {
 
-            FileReader read = new FileReader(fileName);
-            BufferedReader reading = new BufferedReader(read);
-            String content;
-            while ((content = reading.readLine()) != null){
-                return content;
+            reader = new BufferedReader(new FileReader(fileName));
+            while ((lines = reader.readLine()) != null){
+                text += lines+"\n";
             }
-            reading.close();
+            reader.close();
         }catch (IOException e){
             System.out.println("!!reading file gone wrong");
         }
-        return "";
+    }
 
+
+    public String getText() {
+        return text;
     }
 }

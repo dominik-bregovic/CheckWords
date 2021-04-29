@@ -5,24 +5,24 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
 
-    JFrame jFrame;
-    JLabel jLabel;
-    JPanel jPanel;
-    int count = 0;
+    private JFrame jFrame;
+    private JPanel jPanel;
+    private JButton jButton;
+    private ChoseFile fileChoose;
 
     public GUI(){
 
         jFrame = new JFrame();
-        JButton button = new JButton("read file");
-        button.addActionListener(this);
+        jButton = new JButton("Search for file");
+        jButton.addActionListener(this);
 
-        jLabel = new JLabel("Number of clicks " + count);
+//        jLabel = new JLabel();
 
         jPanel = new JPanel();
         jPanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        jPanel.setLayout(new GridLayout(0,1));
-        jPanel.add(button);
-        jPanel.add(jLabel);
+        jPanel.setLayout(new GridLayout(1,1));
+        jPanel.add(jButton);
+//        jPanel.add(jLabel);
 
 
         jFrame.add(jPanel, BorderLayout.CENTER);
@@ -32,10 +32,11 @@ public class GUI implements ActionListener {
         jFrame.setVisible(true);
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        FileChoose fileChoose = new FileChoose();
-
-
+        fileChoose = new ChoseFile();
     }
+
 }

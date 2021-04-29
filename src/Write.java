@@ -4,7 +4,8 @@ import java.io.IOException;
 
 public class Write {
 
-    String text = "This is my first message in Linux";
+    String text = "This is my first message in Linux" +
+            "\nasdkjgkajfdldksgjlki\n" + "sdagfdfasg";
 
     public void writeString(){
 
@@ -13,10 +14,9 @@ public class Write {
             FileWriter fw = new FileWriter("firstText.txt");
             BufferedWriter writer = new BufferedWriter(fw);
             writer.write(text);
-            System.out.println("Should have written text");
+//            System.out.println("Should have written text");
             writer.close();
         }catch(IOException e){
-
             System.out.println("!!No content written into file!!");
         }
 
