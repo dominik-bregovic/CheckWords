@@ -1,15 +1,18 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TextAnalysis {
 
-    BufferedReader reader;
-    String copiedText = "";
-    String wordsOnly  = "";
-    List<String> listOfWords = new ArrayList();
+    private BufferedReader reader;
+    private String copiedText = "";
+    private String wordsOnly  = "";
+    private String oneWord = "";
+    private List<Character> specialCharacters = new ArrayList<>();
+    private List<String> listOfWords = new ArrayList();
+    private Set<String> uniqueWords = new HashSet<>();
+    private List<String> uniqueList;
 
     public void reader(String fileName){
 
@@ -29,26 +32,77 @@ public class TextAnalysis {
 
 
     public void listWords(){
-        String oneWord = "";
+        notValidChars();
+        boolean validChar;
 
         for (int i = 0; i < wordsOnly.length(); i++) {
 
-            if(wordsOnly.charAt(i) != ' ' && wordsOnly.charAt(i) != '.' && wordsOnly.charAt(i) != '!' &&wordsOnly.charAt(i) != '?'){
+              validChar = verifyChars(true, i);
 
-                oneWord += wordsOnly.charAt(i);
+            if (validChar == true){
 
-            } else{
-                listOfWords.add(oneWord);
-                String reseter = "";
-                oneWord = reseter;
+                buildWord(i);
+            }else {
+
+                saveWord();
             }
         }
+        cleanList();
+        sortingListToUniqueElements();
+    }
+
+    public boolean verifyChars(boolean validChar, int i){
+
+        for (Character specialCharacter : specialCharacters) {
+            if (wordsOnly.charAt(i) == specialCharacter) {
+                validChar = false;
+                break;
+            }
+        }
+        return validChar;
+    }
+
+    public void saveWord(){
+
+            listOfWords.add(oneWord);
+            String reseter = "";
+            oneWord = reseter;
+    }
+
+    public void buildWord( int i){
+        oneWord += wordsOnly.charAt(i);
+    }
+
+    public void notValidChars(){
+        specialCharacters.add(' ');
+        specialCharacters.add('.');
+        specialCharacters.add('!');
+        specialCharacters.add('?');
+    }
+
+    public void cleanList(){
 
         for (int i = 0; i < listOfWords.size(); i++) {
-            System.out.println(listOfWords.get(i));
+            if (listOfWords.get(i).equals("")){
+                listOfWords.remove(i);
+            }
         }
     }
 
+    public void sortingListToUniqueElements(){
+        uniqueWords.addAll(listOfWords);
+        uniqueList = new ArrayList<>(uniqueWords);
+    }
+
+    public void wordCounter(){
+        int count = 0;
+
+        for (int i = 0; i < uniqueList.size(); i++) {
+            count = Collections.frequency(listOfWords, uniqueList.get(i));
+            uniqueList.set(i, uniqueList.get(i) + ": " + count);
+        }
+        System.out.println(uniqueList);
+    }
 
     public String getText() {
         return copiedText;
