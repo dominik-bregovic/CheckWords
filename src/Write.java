@@ -4,8 +4,7 @@ import java.io.IOException;
 
 public class Write {
 
-    String text = "This is my first message in Linux" +
-            "\nasdkjgkajfdldksgjlki\n" + "sdagfdfasg";
+    String text = "";
 
     public void writeString(){
 

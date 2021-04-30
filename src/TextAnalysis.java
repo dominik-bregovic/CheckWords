@@ -13,6 +13,8 @@ public class TextAnalysis {
     private List<String> listOfWords = new ArrayList();
     private Set<String> uniqueWords = new HashSet<>();
     private List<String> uniqueList;
+    private List<String> analyzedList = new ArrayList<>();
+
 
     public void reader(String fileName){
 
@@ -39,7 +41,7 @@ public class TextAnalysis {
 
               validChar = verifyChars(true, i);
 
-            if (validChar == true){
+            if (validChar){
 
                 buildWord(i);
             }else {
@@ -92,20 +94,38 @@ public class TextAnalysis {
     public void sortingListToUniqueElements(){
         uniqueWords.addAll(listOfWords);
         uniqueList = new ArrayList<>(uniqueWords);
+        Collections.sort(uniqueList);
     }
 
     public void wordCounter(){
-        int count = 0;
+        Integer count = 0;
 
-        for (int i = 0; i < uniqueList.size(); i++) {
-            count = Collections.frequency(listOfWords, uniqueList.get(i));
-            uniqueList.set(i, uniqueList.get(i) + ": " + count);
+        for (String s : uniqueList) {
+            count = Collections.frequency(listOfWords, s);
+            analyzedList.add(s);
+            analyzedList.add(String.valueOf(count));
         }
-        System.out.println(uniqueList);
+//        System.out.println(analyzedList);
+
     }
 
-    public String getText() {
-        return copiedText;
+    //Output like in example, but when word over 16 characters then the output is shifted to the right
+    public void printTable() {
+        String space = " ";
+
+        System.out.println("Wort\t\t\t" + "Anzahl");
+        for (int i = 0; i < analyzedList.size(); i += 2) {
+            int spaces = 16;
+            int wordLength = analyzedList.get(i).length();
+            spaces = spaces-wordLength;
+
+            System.out.print(analyzedList.get(i));
+            for (int j = 0; j < spaces; j++) {
+                System.out.print(space);
+            }
+            System.out.println(analyzedList.get(i+1));
+
+        }
     }
 
 }

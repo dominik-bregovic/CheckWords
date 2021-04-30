@@ -12,7 +12,7 @@ public class ChoseFile {
         defineJFileChosser();
         gettingTextFilePath();
         readChosenDoc();
-        buildTable();
+        builtTable();
 
     }
 
@@ -35,11 +35,13 @@ public class ChoseFile {
         this.readFile.reader(this.file.toString());
     }
 
-    public void buildTable(){
+    public void builtTable(){
         readFile.listWords();
         readFile.wordCounter();
-
+        readFile.printTable();
     }
+
+
 
 
 }

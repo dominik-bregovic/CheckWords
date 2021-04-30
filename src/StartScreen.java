@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI implements ActionListener {
+public class StartScreen implements ActionListener {
 
     private JFrame jFrame;
     private JPanel jPanel;
     private JButton jButton;
     private ChoseFile fileChoose;
 
-    public GUI(){
+    public StartScreen(){
 
         this.jFrame = new JFrame();
         this.jButton = new JButton("Search for file");
