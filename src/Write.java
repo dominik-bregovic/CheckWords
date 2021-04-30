@@ -7,7 +7,6 @@ public class Write {
     String text = "";
 
     public void writeString(){
-
         try{
 
             FileWriter fw = new FileWriter("firstText.txt");

@@ -6,7 +6,7 @@ import java.util.*;
 public class TextAnalysis {
 
     private BufferedReader reader;
-    private String copiedText = "";
+    private String copiedInputText = "";
     private String wordsOnly  = "";
     private String oneWord = "";
     private List<Character> specialCharacters = new ArrayList<>();
@@ -23,7 +23,7 @@ public class TextAnalysis {
 
             this.reader = new BufferedReader(new FileReader(fileName));
             while ((lines = reader.readLine()) != null){
-                this.copiedText += lines+"\n";
+                this.copiedInputText += lines+"\n";
                 this.wordsOnly += lines + " ";
             }
             this.reader.close();
@@ -65,10 +65,10 @@ public class TextAnalysis {
     }
 
     public void saveWord(){
-
             listOfWords.add(oneWord);
-            String reseter = "";
-            oneWord = reseter;
+
+            //Resetting oneWord to empty
+            oneWord = "";
     }
 
     public void buildWord( int i){
@@ -105,8 +105,6 @@ public class TextAnalysis {
             analyzedList.add(s);
             analyzedList.add(String.valueOf(count));
         }
-//        System.out.println(analyzedList);
-
     }
 
     //Output like in example, but when word over 16 characters then the output is shifted to the right
