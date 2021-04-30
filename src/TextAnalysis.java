@@ -111,7 +111,7 @@ public class TextAnalysis {
     public void printTable() {
         String space = " ";
 
-        System.out.println("Wort\t\t\t" + "Anzahl");
+        System.out.println("Wort            " + "Anzahl");
         for (int i = 0; i < analyzedList.size(); i += 2) {
             int spaces = 16;
             int wordLength = analyzedList.get(i).length();
