@@ -49,8 +49,8 @@ public class TextAnalysis {
                 saveWord();
             }
         }
-        cleanList();
         sortingListToUniqueElements();
+        cleanList();
     }
 
     public boolean verifyChars(boolean validChar, int i){
@@ -84,9 +84,9 @@ public class TextAnalysis {
 
     public void cleanList(){
 
-        for (int i = 0; i < listOfWords.size(); i++) {
-            if (listOfWords.get(i).equals("")){
-                listOfWords.remove(i);
+        for (int i = 0; i < uniqueList.size(); i++) {
+            if (uniqueList.get(i).equals("")){
+                uniqueList.remove(i);
             }
         }
     }
